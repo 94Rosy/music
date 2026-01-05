@@ -1,65 +1,50 @@
-import Image from "next/image";
+// app/page.tsx
+import ExploreControls from "@/components/ExploreControls";
+import ResultList from "@/components/ResultList";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="mx-auto max-w-6xl px-5 py-8">
+      <header className="space-y-2">
+        <h1 className="text-2xl font-semibold tracking-tight">
+          Music Explorer
+        </h1>
+        <p className="text-sm text-neutral-600">
+          분위기와 상황을 선택하면 AI가 검색 키워드를 만들고, YouTube에서 바로
+          들을 수 있게 플레이리스트를 구성해줘요.
+        </p>
+      </header>
+
+      <section className="mt-8">
+        <ExploreControls />
+      </section>
+
+      <section className="mt-8 rounded-xl border bg-white p-5">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="space-y-1">
+            <h2 className="text-base font-medium">AI 인사이트</h2>
+            <p className="text-sm text-neutral-600">
+              선택한 조건을 바탕으로 추천 방향을 설명해요. (지금은 더미)
+            </p>
+          </div>
+
+          <button
+            type="button"
+            className="inline-flex h-10 items-center justify-center rounded-md bg-neutral-900 px-4 text-sm font-medium text-white transition hover:bg-neutral-800 active:scale-[0.99]"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            AI로 플레이리스트 만들기
+          </button>
         </div>
-      </main>
-    </div>
+
+        <div className="mt-4 rounded-lg bg-neutral-50 p-4 text-sm text-neutral-700">
+          “잔잔하고 반복적인 사운드 중심이라 작업/집중에 좋아요. 가사 부담이
+          적은 곡들이 많아요.”
+        </div>
+      </section>
+
+      <section className="mt-8">
+        <ResultList />
+      </section>
+    </main>
   );
 }
