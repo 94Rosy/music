@@ -22,8 +22,23 @@ const mockResults = [
   },
 ];
 
-export default function ResultList() {
-  const isLoading = false; // 다음 단계에서 실제 로딩 상태로 바꿈
+type Props = {
+  isLoading: boolean;
+  isVisible: boolean;
+};
+
+export default function ResultList({ isLoading, isVisible }: Props) {
+  if (!isVisible && !isLoading) {
+    return (
+      <div className="rounded-xl border bg-white p-5 text-sm text-neutral-600">
+        결과가 없습니다. 조건을 고른 뒤에{" "}
+        <span className="font-medium text-neutral-900">
+          AI로 플레이리스트 만들기
+        </span>
+        를 눌러보세요.
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-3">
@@ -61,7 +76,7 @@ export default function ResultList() {
                   type="button"
                   className="inline-flex h-9 items-center justify-center rounded-md bg-neutral-900 px-3 text-sm text-white transition hover:bg-neutral-800"
                 >
-                  열기
+                  유튜브에서 열기
                 </button>
                 <button
                   type="button"
