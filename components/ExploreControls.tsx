@@ -1,4 +1,3 @@
-// components/ExploreControls.tsx
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 export type Filters = {
@@ -44,7 +43,7 @@ export default function ExploreControls({
   ].filter(
     (item, idx, arr) =>
       arr.findIndex((x) => x.type === item.type && x.value === item.value) ===
-      idx
+      idx,
   );
 
   return (
